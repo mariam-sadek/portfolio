@@ -23,11 +23,11 @@
             background-color: var(--dark-navy);
             color: var(--text-main);
             font-family: 'Space Grotesk', sans-serif;
-            line-height: 1.8;
+            line-height: 1.6;
             overflow-x: hidden;
         }
 
-        /* --- Right Vertical Navigation Dock --- */
+        /* --- Navigation Dock --- */
         .nav-dock {
             position: fixed;
             right: 30px;
@@ -56,8 +56,6 @@
         }
 
         .nav-dock a:hover { color: var(--pink); }
-
-        /* Tooltip style labels */
         .nav-dock a span {
             position: absolute;
             right: 45px;
@@ -72,28 +70,26 @@
             transition: 0.3s;
             white-space: nowrap;
         }
-
         .nav-dock a:hover span { opacity: 1; right: 55px; }
 
-        /* --- Social Sidebar --- */
-        .v-sidebar {
-            position: fixed;
-            bottom: 0;
-            left: 40px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 25px;
-            z-index: 100;
+        /* --- Layout Sections --- */
+        header { 
+            min-height: 100vh; 
+            display: flex; 
+            flex-direction: column; 
+            justify-content: center; 
+            padding: 0 10% 0 10%; 
         }
-        .v-sidebar a { color: var(--text-main); font-size: 1.3rem; transition: 0.3s; }
-        .v-sidebar a:hover { color: var(--pink); transform: translateY(-5px); }
-        .v-sidebar::after { content: ""; width: 1px; height: 120px; background: var(--pink); margin-top: 10px; }
 
-        /* --- Sections --- */
-        header { height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 0 15%; }
-        section { padding: 150px 15%; min-height: 80vh; border-bottom: 1px solid rgba(255, 0, 122, 0.1); }
+        section { 
+            padding: 100px 10%; 
+            min-height: auto; 
+            border-bottom: 1px solid rgba(255, 0, 122, 0.1); 
+        }
         
+        h1 { font-size: clamp(2.5rem, 7vw, 5rem); color: #fff; line-height: 1.1; margin: 15px 0; }
+        h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 20px; color: #fff; }
+
         .hook-text {
             font-family: 'Fira Code', monospace;
             color: var(--pink);
@@ -107,64 +103,85 @@
         @keyframes typing { from { width: 0 } to { width: 100% } }
         @keyframes blink { from, to { border-color: transparent } 50% { border-color: var(--pink); } }
 
-        h1 { font-size: clamp(3rem, 8vw, 5rem); color: #fff; line-height: 1.1; }
-        .uni-tag { color: var(--text-dim); font-size: 1.5rem; margin: 20px 0; }
+        .uni-tag { color: var(--text-dim); font-size: clamp(1rem, 3vw, 1.3rem); margin-bottom: 20px; }
         .uni-tag b { color: var(--pink); }
 
-        /* --- Long Vertical Skills --- */
-        .skill-box {
-            display: flex;
-            flex-direction: column;
-            gap: 60px;
-            margin-top: 50px;
-        }
+        /* --- Skills & Experience --- */
+        .skill-box { display: flex; flex-direction: column; gap: 30px; margin-top: 40px; }
+        
         .skill-entry {
             display: flex;
-            gap: 40px;
-            padding: 30px;
+            gap: 25px;
+            padding: 25px;
             background: var(--navy-blue);
             border-radius: 15px;
             border: 1px solid transparent;
             transition: 0.4s;
         }
-        .skill-entry:hover { border-color: var(--pink); transform: translateX(10px); }
-        .skill-entry i { font-size: 3rem; color: var(--pink); margin-top: 10px; }
-        .skill-entry h3 { color: #fff; margin-bottom: 10px; font-size: 1.8rem; }
+        .skill-entry:hover { border-color: var(--pink); transform: translateY(-5px); }
+        .skill-entry i { font-size: 2.5rem; color: var(--pink); }
 
         /* --- Buttons --- */
         .btn {
             border: 1px solid var(--pink);
             color: var(--pink);
-            padding: 15px 30px;
+            padding: 12px 25px;
             text-decoration: none;
             font-family: 'Fira Code', monospace;
             display: inline-block;
             transition: 0.3s;
-            margin-top: 20px;
+            margin-top: 25px;
+            font-size: 0.9rem;
         }
-        .btn:hover { background: rgba(255, 0, 122, 0.1); box-shadow: 0 0 20px rgba(255, 0, 122, 0.2); }
+        .btn:hover { background: rgba(255, 0, 122, 0.1); box-shadow: 0 0 15px rgba(255, 0, 122, 0.2); }
 
+        /* --- Footer Social Icons --- */
+        .footer-socials {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+        .footer-socials a {
+            color: var(--text-main);
+            font-size: 1.5rem;
+            transition: 0.3s;
+        }
+        .footer-socials a:hover {
+            color: var(--pink);
+            transform: translateY(-3px);
+        }
+
+        /* --- RESPONSIVENESS --- */
         @media (max-width: 768px) {
-            header, section { padding: 80px 10%; }
-            .nav-dock { display: none; }
+            .nav-dock { 
+                top: auto;
+                bottom: 15px;
+                right: 50%;
+                transform: translateX(50%);
+                flex-direction: row;
+                border-radius: 20px;
+                padding: 10px 20px;
+                width: 92%;
+                justify-content: space-around;
+            }
+            .nav-dock a span { display: none; } 
+            
+            .skill-entry { flex-direction: column; text-align: left; gap: 15px; }
+            header { padding-top: 50px; }
+            section { padding: 60px 8%; }
         }
     </style>
 </head>
 <body>
 
-    <div class="nav-dock">
+    <nav class="nav-dock">
         <a href="#home"><i class="fas fa-home"></i><span>Home</span></a>
         <a href="#about"><i class="fas fa-user-tie"></i><span>About</span></a>
         <a href="#skills"><i class="fas fa-tools"></i><span>Skills</span></a>
         <a href="#experience"><i class="fas fa-briefcase"></i><span>Experience</span></a>
         <a href="#contact"><i class="fas fa-envelope"></i><span>Contact</span></a>
-    </div>
-
-    <div class="v-sidebar">
-        <a href="https://github.com/mariam-sadek" target="_blank"><i class="fab fa-github"></i></a>
-        <a href="https://www.linkedin.com/in/mariamsadek7" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="mailto:maryt4538@gmail.com"><i class="fas fa-at"></i></a>
-    </div>
+    </nav>
 
     <header id="home">
         <p class="hook-text">> access_granted: software_tester</p>
@@ -173,17 +190,18 @@
         <p style="max-width: 600px; color: var(--text-dim); font-size: 1.1rem;">
             I specialize in the Software Testing Life Cycle (STLC), ensuring high-quality user experiences through rigorous manual and automated testing processes.
         </p>
-        <a href="#about" class="btn">View My Portfolio</a>
+        <div>
+            <a href="#about" class="btn">View My Portfolio</a>
+        </div>
     </header>
 
     <section id="about">
         <p style="color:var(--pink); font-family:'Fira Code';">01. About Me</p>
         <h2>Academic & Professional Foundation</h2>
-        <p style="max-width: 700px; font-size: 1.2rem;">
+        <p style="max-width: 700px; font-size: 1.1rem;">
             Currently pursuing my Bachelor's degree in Computer Science at <b>Minufiya University</b>. 
-            I am a **Software Testing Trainee at DEPI**, where I focus on mastering 
-            quality assurance methodologies within the software development lifecycle. 
-            I believe that code is only as good as the tests behind it.
+            I am a <strong>Software Testing Trainee at DEPI</strong>, where I focus on mastering 
+            quality assurance methodologies. I believe that code is only as good as the tests behind it.
         </p>
     </section>
 
@@ -225,10 +243,10 @@
             <div>
                 <h3 style="color: var(--pink);">Software Testing Intern</h3>
                 <p><strong>DEPI Initiative</strong> | 2025 - Present</p>
-                <ul style="list-style: none; margin-top: 15px;">
-                    <li>▹ Mastering QA fundamentals and industry standards.</li>
-                    <li>▹ Executing manual test cases for web environments.</li>
-                    <li>▹ Developing logic for automated testing frameworks.</li>
+                <ul style="list-style: none; margin-top: 15px; color: var(--text-dim);">
+                    <li><span style="color:var(--pink)">▹</span> Mastering QA fundamentals and industry standards.</li>
+                    <li><span style="color:var(--pink)">▹</span> Executing manual test cases for web environments.</li>
+                    <li><span style="color:var(--pink)">▹</span> Developing logic for automated testing frameworks.</li>
                 </ul>
             </div>
         </div>
@@ -241,8 +259,13 @@
         <a href="mailto:maryt4538@gmail.com" class="btn">Send a Message</a>
     </section>
 
-    <footer style="padding: 40px; text-align: center; color: var(--text-dim); font-family: 'Fira Code';">
-        <p>Built for the Future | Minufiya University &copy; 2026</p>
+    <footer style="padding: 60px 20px; text-align: center; color: var(--text-dim); font-family: 'Fira Code';">
+        <div class="footer-socials">
+            <a href="https://github.com/mariam-sadek" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/mariamsadek7" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:maryt4538@gmail.com"><i class="fas fa-envelope"></i></a>
+        </div>
+        <p style="font-size: 0.8rem;">Built for the Future | Mariam Sadek &copy; 2026</p>
     </footer>
 
 </body>
