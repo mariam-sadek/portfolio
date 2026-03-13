@@ -1,272 +1,407 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mariam Sadek | QA Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        :root {
-            --dark-navy: #020c1b;
-            --navy-blue: #0a192f;
-            --pink: #ff007a;
-            --text-main: #ccd6f6;
-            --text-dim: #8892b0;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mariam Sadek | Software Tester Portfolio</title>
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html { scroll-behavior: smooth; }
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;500;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
 
-        body {
-            background-color: var(--dark-navy);
-            color: var(--text-main);
-            font-family: 'Space Grotesk', sans-serif;
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-        /* --- Navigation Dock --- */
-        .nav-dock {
-            position: fixed;
-            right: 30px;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            z-index: 1000;
-            background: rgba(10, 25, 47, 0.8);
-            padding: 20px 10px;
-            border-radius: 50px;
-            border: 1px solid rgba(255, 0, 122, 0.3);
-            backdrop-filter: blur(10px);
-        }
+<style>
 
-        .nav-dock a {
-            color: var(--text-dim);
-            font-size: 1.2rem;
-            text-decoration: none;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
+:root{
+--dark-navy:#020c1b;
+--navy-blue:#0a192f;
+--pink:#ff007a;
+--text-main:#ccd6f6;
+--text-dim:#8892b0;
+}
 
-        .nav-dock a:hover { color: var(--pink); }
-        .nav-dock a span {
-            position: absolute;
-            right: 45px;
-            background: var(--pink);
-            color: white;
-            padding: 5px 12px;
-            border-radius: 4px;
-            font-size: 0.8rem;
-            font-family: 'Fira Code', monospace;
-            opacity: 0;
-            pointer-events: none;
-            transition: 0.3s;
-            white-space: nowrap;
-        }
-        .nav-dock a:hover span { opacity: 1; right: 55px; }
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
 
-        /* --- Layout Sections --- */
-        header { 
-            min-height: 100vh; 
-            display: flex; 
-            flex-direction: column; 
-            justify-content: center; 
-            padding: 0 10% 0 10%; 
-        }
+body{
+background:var(--dark-navy);
+color:var(--text-main);
+font-family:'Space Grotesk',sans-serif;
+line-height:1.6;
+overflow-x:hidden;
+}
 
-        section { 
-            padding: 100px 10%; 
-            min-height: auto; 
-            border-bottom: 1px solid rgba(255, 0, 122, 0.1); 
-        }
-        
-        h1 { font-size: clamp(2.5rem, 7vw, 5rem); color: #fff; line-height: 1.1; margin: 15px 0; }
-        h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 20px; color: #fff; }
+/* Navigation */
 
-        .hook-text {
-            font-family: 'Fira Code', monospace;
-            color: var(--pink);
-            border-right: 3px solid var(--pink);
-            width: fit-content;
-            overflow: hidden;
-            white-space: nowrap;
-            animation: typing 3s steps(30), blink .75s step-end infinite;
-        }
+.nav-dock{
+position:fixed;
+right:30px;
+top:50%;
+transform:translateY(-50%);
+display:flex;
+flex-direction:column;
+gap:20px;
+z-index:1000;
+background:rgba(10,25,47,0.8);
+padding:20px 10px;
+border-radius:50px;
+border:1px solid rgba(255,0,122,0.3);
+backdrop-filter:blur(10px);
+}
 
-        @keyframes typing { from { width: 0 } to { width: 100% } }
-        @keyframes blink { from, to { border-color: transparent } 50% { border-color: var(--pink); } }
+.nav-dock a{
+color:var(--text-dim);
+font-size:1.2rem;
+text-decoration:none;
+transition:.3s;
+display:flex;
+align-items:center;
+justify-content:center;
+position:relative;
+}
 
-        .uni-tag { color: var(--text-dim); font-size: clamp(1rem, 3vw, 1.3rem); margin-bottom: 20px; }
-        .uni-tag b { color: var(--pink); }
+.nav-dock a:hover{color:var(--pink);}
 
-        /* --- Skills & Experience --- */
-        .skill-box { display: flex; flex-direction: column; gap: 30px; margin-top: 40px; }
-        
-        .skill-entry {
-            display: flex;
-            gap: 25px;
-            padding: 25px;
-            background: var(--navy-blue);
-            border-radius: 15px;
-            border: 1px solid transparent;
-            transition: 0.4s;
-        }
-        .skill-entry:hover { border-color: var(--pink); transform: translateY(-5px); }
-        .skill-entry i { font-size: 2.5rem; color: var(--pink); }
+.nav-dock a span{
+position:absolute;
+right:45px;
+background:var(--pink);
+color:white;
+padding:5px 12px;
+border-radius:4px;
+font-size:.8rem;
+font-family:'Fira Code',monospace;
+opacity:0;
+pointer-events:none;
+transition:.3s;
+white-space:nowrap;
+}
 
-        /* --- Buttons --- */
-        .btn {
-            border: 1px solid var(--pink);
-            color: var(--pink);
-            padding: 12px 25px;
-            text-decoration: none;
-            font-family: 'Fira Code', monospace;
-            display: inline-block;
-            transition: 0.3s;
-            margin-top: 25px;
-            font-size: 0.9rem;
-        }
-        .btn:hover { background: rgba(255, 0, 122, 0.1); box-shadow: 0 0 15px rgba(255, 0, 122, 0.2); }
+.nav-dock a:hover span{
+opacity:1;
+right:55px;
+}
 
-        /* --- Footer Social Icons --- */
-        .footer-socials {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-bottom: 20px;
-        }
-        .footer-socials a {
-            color: var(--text-main);
-            font-size: 1.5rem;
-            transition: 0.3s;
-        }
-        .footer-socials a:hover {
-            color: var(--pink);
-            transform: translateY(-3px);
-        }
+/* Layout */
 
-        /* --- RESPONSIVENESS --- */
-        @media (max-width: 768px) {
-            .nav-dock { 
-                top: auto;
-                bottom: 15px;
-                right: 50%;
-                transform: translateX(50%);
-                flex-direction: row;
-                border-radius: 20px;
-                padding: 10px 20px;
-                width: 92%;
-                justify-content: space-around;
-            }
-            .nav-dock a span { display: none; } 
-            
-            .skill-entry { flex-direction: column; text-align: left; gap: 15px; }
-            header { padding-top: 50px; }
-            section { padding: 60px 8%; }
-        }
-    </style>
+header{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+padding:0 10%;
+}
+
+section{
+padding:100px 10%;
+border-bottom:1px solid rgba(255,0,122,0.1);
+}
+
+h1{
+font-size:clamp(2.5rem,7vw,5rem);
+color:#fff;
+line-height:1.1;
+margin:15px 0;
+}
+
+h2{
+font-size:clamp(1.8rem,4vw,2.5rem);
+margin-bottom:20px;
+color:#fff;
+}
+
+/* Typing Animation */
+
+.hook-text{
+font-family:'Fira Code',monospace;
+color:var(--pink);
+border-right:3px solid var(--pink);
+width:fit-content;
+overflow:hidden;
+white-space:nowrap;
+animation:typing 3s steps(30),blink .75s step-end infinite;
+}
+
+@keyframes typing{
+from{width:0}
+to{width:100%}
+}
+
+@keyframes blink{
+from,to{border-color:transparent}
+50%{border-color:var(--pink)}
+}
+
+/* University Tag */
+
+.uni-tag{
+color:var(--text-dim);
+font-size:clamp(1rem,3vw,1.3rem);
+margin-bottom:20px;
+}
+
+.uni-tag b{
+color:var(--pink);
+}
+
+/* Skills */
+
+.skill-box{
+display:flex;
+flex-direction:column;
+gap:30px;
+margin-top:40px;
+}
+
+.skill-entry{
+display:flex;
+gap:25px;
+padding:25px;
+background:var(--navy-blue);
+border-radius:15px;
+border:1px solid transparent;
+transition:.4s;
+}
+
+.skill-entry:hover{
+border-color:var(--pink);
+transform:translateY(-5px);
+}
+
+.skill-entry i{
+font-size:2.5rem;
+color:var(--pink);
+}
+
+/* Buttons */
+
+.btn{
+border:1px solid var(--pink);
+color:var(--pink);
+padding:12px 25px;
+text-decoration:none;
+font-family:'Fira Code',monospace;
+display:inline-block;
+transition:.3s;
+margin-top:25px;
+font-size:.9rem;
+}
+
+.btn:hover{
+background:rgba(255,0,122,0.1);
+box-shadow:0 0 15px rgba(255,0,122,0.2);
+}
+
+/* Footer */
+
+.footer-socials{
+display:flex;
+justify-content:center;
+gap:30px;
+margin-bottom:20px;
+}
+
+.footer-socials a{
+color:var(--text-main);
+font-size:1.5rem;
+transition:.3s;
+}
+
+.footer-socials a:hover{
+color:var(--pink);
+transform:translateY(-3px);
+}
+
+/* Responsive */
+
+@media(max-width:768px){
+
+.nav-dock{
+top:auto;
+bottom:15px;
+right:50%;
+transform:translateX(50%);
+flex-direction:row;
+border-radius:20px;
+padding:10px 20px;
+width:92%;
+justify-content:space-around;
+}
+
+.nav-dock a span{display:none;}
+
+.skill-entry{
+flex-direction:column;
+text-align:left;
+gap:15px;
+}
+
+header{padding-top:50px;}
+section{padding:60px 8%;}
+}
+
+</style>
 </head>
+
 <body>
 
-    <nav class="nav-dock">
-        <a href="#home"><i class="fas fa-home"></i><span>Home</span></a>
-        <a href="#about"><i class="fas fa-user-tie"></i><span>About</span></a>
-        <a href="#skills"><i class="fas fa-tools"></i><span>Skills</span></a>
-        <a href="#experience"><i class="fas fa-briefcase"></i><span>Experience</span></a>
-        <a href="#contact"><i class="fas fa-envelope"></i><span>Contact</span></a>
-    </nav>
+<nav class="nav-dock">
+<a href="#home"><i class="fas fa-home"></i><span>Home</span></a>
+<a href="#about"><i class="fas fa-user-tie"></i><span>About</span></a>
+<a href="#skills"><i class="fas fa-tools"></i><span>Skills</span></a>
+<a href="#experience"><i class="fas fa-briefcase"></i><span>Experience</span></a>
+<a href="#contact"><i class="fas fa-envelope"></i><span>Contact</span></a>
+</nav>
 
-    <header id="home">
-        <p class="hook-text">> access_granted: software_tester</p>
-        <h1>Mariam Sadek.</h1>
-        <p class="uni-tag">Student at <b>Minufiya University</b></p>
-        <p style="max-width: 600px; color: var(--text-dim); font-size: 1.1rem;">
-            I specialize in the Software Testing Life Cycle (STLC), ensuring high-quality user experiences through rigorous manual and automated testing processes.
-        </p>
-        <div>
-            <a href="#about" class="btn">View My Portfolio</a>
-        </div>
-    </header>
+<header id="home">
 
-    <section id="about">
-        <p style="color:var(--pink); font-family:'Fira Code';">01. About Me</p>
-        <h2>Academic & Professional Foundation</h2>
-        <p style="max-width: 700px; font-size: 1.1rem;">
-            Currently pursuing my Bachelor's degree in Computer Science at <b>Minufiya University</b>. 
-            I am a <strong>Software Testing Trainee at DEPI</strong>, where I focus on mastering 
-            quality assurance methodologies. I believe that code is only as good as the tests behind it.
-        </p>
-    </section>
+<p class="hook-text">> access_granted: software_tester</p>
 
-    <section id="skills">
-        <p style="color:var(--pink); font-family:'Fira Code';">02. Technical Focus</p>
-        <h2>My Expertise Stack</h2>
-        
-        <div class="skill-box">
-            <div class="skill-entry">
-                <i class="fas fa-clipboard-check"></i>
-                <div>
-                    <h3>Quality Assurance</h3>
-                    <p>Deep expertise in SDLC, STLC, and meticulous Bug Reporting. Experienced in identifying defects early to ensure software reliability.</p>
-                </div>
-            </div>
+<h1>Mariam Sadek.</h1>
 
-            <div class="skill-entry">
-                <i class="fab fa-python"></i>
-                <div>
-                    <h3>Automation & Logic</h3>
-                    <p>Utilizing Python, C++, and Java to develop the foundational logic required for high-performance Automation Testing scripts.</p>
-                </div>
-            </div>
+<h2 style="color:#ff007a;font-family:'Fira Code',monospace;">
+Bugs Aren't Allowed Here.
+</h2>
 
-            <div class="skill-entry">
-                <i class="fas fa-brain"></i>
-                <div>
-                    <h3>Algorithm Design</h3>
-                    <p>Active contributor to the ICPC community at <b>Minufiya University</b>, applying complex problem-solving to edge-case testing.</p>
-                </div>
-            </div>
-        </div>
-    </section>
+<p class="uni-tag">
+Student at <b>Minufiya University</b>
+</p>
 
-    <section id="experience">
-        <p style="color:var(--pink); font-family:'Fira Code';">03. Career Timeline</p>
-        <h2>Experience</h2>
-        <div class="skill-entry" style="margin-top: 40px; border-left: 4px solid var(--pink);">
-            <div>
-                <h3 style="color: var(--pink);">Software Testing Intern</h3>
-                <p><strong>DEPI Initiative</strong> | 2025 - Present</p>
-                <ul style="list-style: none; margin-top: 15px; color: var(--text-dim);">
-                    <li><span style="color:var(--pink)">▹</span> Mastering QA fundamentals and industry standards.</li>
-                    <li><span style="color:var(--pink)">▹</span> Executing manual test cases for web environments.</li>
-                    <li><span style="color:var(--pink)">▹</span> Developing logic for automated testing frameworks.</li>
-                </ul>
-            </div>
-        </div>
-    </section>
+<p style="max-width:600px;color:var(--text-dim);font-size:1.1rem;">
+I specialize in the Software Testing Life Cycle (STLC), ensuring high-quality user experiences through rigorous manual and automated testing processes.
+</p>
 
-    <section id="contact" style="text-align: center; border: none;">
-        <p style="color:var(--pink); font-family:'Fira Code';">04. Connection</p>
-        <h2>Bugs Aren't Allowed Here.</h2>
-        <p>Are you looking for a dedicated QA engineer to join your team?</p>
-        <a href="mailto:maryt4538@gmail.com" class="btn">Send a Message</a>
-    </section>
+<a href="#about" class="btn">View My Portfolio</a>
 
-    <footer style="padding: 60px 20px; text-align: center; color: var(--text-dim); font-family: 'Fira Code';">
-        <div class="footer-socials">
-            <a href="https://github.com/mariam-sadek" target="_blank"><i class="fab fa-github"></i></a>
-            <a href="https://www.linkedin.com/in/mariamsadek7" target="_blank"><i class="fab fa-linkedin"></i></a>
-            <a href="mailto:maryt4538@gmail.com"><i class="fas fa-envelope"></i></a>
-        </div>
-        <p style="font-size: 0.8rem;">Built for the Future | Mariam Sadek &copy; 2026</p>
-    </footer>
+</header>
+
+<section id="about">
+
+<p style="color:var(--pink);font-family:'Fira Code';">
+01. About Me
+</p>
+
+<h2>Academic & Professional Foundation</h2>
+
+<p style="max-width:700px;font-size:1.1rem;">
+Currently pursuing my Bachelor's degree in Computer Science at <b>Minufiya University</b>.
+I am a <strong>Software Testing Trainee at DEPI</strong>, focusing on mastering quality assurance methodologies.
+</p>
+
+</section>
+
+<section id="skills">
+
+<p style="color:var(--pink);font-family:'Fira Code';">
+02. Technical Focus
+</p>
+
+<h2>My Expertise Stack</h2>
+
+<div class="skill-box">
+
+<div class="skill-entry">
+<i class="fas fa-clipboard-check"></i>
+<div>
+<h3>Quality Assurance</h3>
+<p>Expertise in SDLC, STLC and Bug Reporting.</p>
+</div>
+</div>
+
+<div class="skill-entry">
+<i class="fab fa-python"></i>
+<div>
+<h3>Automation & Logic</h3>
+<p>Using Python, C++ and Java to support automation testing logic.</p>
+</div>
+</div>
+
+<div class="skill-entry">
+<i class="fas fa-brain"></i>
+<div>
+<h3>Algorithm Design</h3>
+<p>ICPC community member at Minufiya University.</p>
+</div>
+</div>
+
+</div>
+
+</section>
+
+<section id="experience">
+
+<p style="color:var(--pink);font-family:'Fira Code';">
+03. Career Timeline
+</p>
+
+<h2>Experience</h2>
+
+<div class="skill-entry" style="margin-top:40px;border-left:4px solid var(--pink);">
+
+<div>
+
+<h3 style="color:var(--pink);">
+Software Testing Intern
+</h3>
+
+<p><strong>DEPI Initiative</strong> | 2025 - Present</p>
+
+<ul style="list-style:none;margin-top:15px;color:var(--text-dim);">
+
+<li><span style="color:var(--pink)">▹</span> Mastering QA fundamentals</li>
+
+<li><span style="color:var(--pink)">▹</span> Executing manual test cases</li>
+
+<li><span style="color:var(--pink)">▹</span> Developing automation logic</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="contact" style="text-align:center;border:none;">
+
+<p style="color:var(--pink);font-family:'Fira Code';">
+04. Connection
+</p>
+
+<h2>Let's Build Bug-Free Software.</h2>
+
+<p>
+Are you looking for a dedicated QA engineer to join your team?
+</p>
+
+<a href="mailto:maryt4538@gmail.com" class="btn">
+Send a Message
+</a>
+
+</section>
+
+<footer style="padding:60px 20px;text-align:center;color:var(--text-dim);font-family:'Fira Code';">
+
+<div class="footer-socials">
+
+<a href="https://github.com/mariam-sadek" target="_blank">
+<i class="fab fa-github"></i>
+</a>
+
+<a href="https://www.linkedin.com/in/mariamsadek7" target="_blank">
+<i class="fab fa-linkedin"></i>
+</a>
+
+<a href="mailto:maryt4538@gmail.com">
+<i class="fas fa-envelope"></i>
+</a>
+
+</div>
+
+<p style="font-size:.8rem;">
+Built for the Future | Mariam Sadek © 2026
+</p>
+
+</footer>
 
 </body>
 </html>
